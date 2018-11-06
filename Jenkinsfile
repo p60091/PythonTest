@@ -10,18 +10,18 @@ pipeline {
         sh 'python --version'
         sh 'python HelloWorld.py'
         sh 'printenv'
-        input "Test input."
+        input "Test input:"
       }
     }
     stage('Test') {
       steps {
         sh 'echo "Test"'
-        sh './run_test.sh'
+        sh './run_test.sh' // echo "Test Successful"
       }
     }
     stage('Deploy') {
       steps {
-        sh 'echo "Deploy"'
+        sh 'echo "Deploy"' // echo "Deploy Successful"
         sh './run_deploy.sh'
       }
     }
