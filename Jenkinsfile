@@ -1,7 +1,7 @@
 pipeline {
   agent { docker { image 'python:3.5.1' } }
   environment {
-    COMPILER = 'Test Environemnt'
+    TEST_ENV = 'Test Environment Variable'
   }
   stages {
     stage('build') {
@@ -10,6 +10,7 @@ pipeline {
         sh 'python --version'
         sh 'python HelloWorld.py'
         sh 'printenv'
+        input "Test input."
       }
     }
     stage('Test') {
