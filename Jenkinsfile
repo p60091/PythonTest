@@ -7,7 +7,7 @@ pipeline {
     stage('Build') {
       steps {
         withEnv(["HOME=${env.WORKSPACE}"]) {
-        sh 'pip isntall --user junit-xml'
+        sh 'pip install --user junit-xml'
         sh 'export PATH=$PATH:$WORKSPACE/.local/bin'
         sh 'pip list --user'
         sh 'python -m site --user-site'
