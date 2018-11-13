@@ -9,9 +9,6 @@ pipeline {
         withEnv(["HOME=${env.WORKSPACE}"]) {
         sh 'pip install --user junit-xml'
         sh 'export PATH=$PATH:$WORKSPACE/.local/bin'
-        sh 'pip list --user'
-        sh 'python -m site --user-site'
-        sh 'ls'
         sh 'echo "Build Stage"'
         sh 'python --version'
         sh 'python HelloWorld.py'
