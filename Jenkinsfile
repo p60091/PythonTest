@@ -5,9 +5,10 @@ pipeline {
   }
   stages {
     stage('Prep') {
-      steps{ git 'https://github.com/kyrus/python-junit-xml.git'
-             sh 'pip install --user'
-              }}
+      steps{ 
+        withEnv("HOME=${env.WORKSPACE}"]) {
+          sh 'pip install --user junit-xml'
+              }}}
     stage('Build') {
       steps {
         sh 'ls'
