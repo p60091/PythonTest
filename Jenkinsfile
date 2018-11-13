@@ -5,9 +5,8 @@ pipeline {
   }
   stages {
     stage('Prep') {
-      steps{ sh 'virtualenv venv --distribute'
-             sh '. venv/bin/activate'
-             sh 'pip install -r requirements.txt' 
+      steps{ sh 'git clone https://github.com/kyrus/python-junit-xml.git'
+             sh 'python python-junit-xml/setup.py install --user'
               }}
     stage('Build') {
       steps {
