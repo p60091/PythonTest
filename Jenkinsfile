@@ -12,6 +12,8 @@ pipeline {
     stage('Build') {
       steps {
         sh 'export PATH=$PATH:$WORKSPACE/.local/bin'
+        sh 'pip list --user'
+        sh 'python -m site --user-site'
         sh 'ls'
         sh 'echo "Build Stage"'
         sh 'python --version'
