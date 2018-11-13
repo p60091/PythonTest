@@ -4,9 +4,13 @@ pipeline {
     TEST_ENV = 'Test Environment Variable'
   }
   stages {
-    stage('build') {
+    stage('Prep') {
+      pip install junit-xml
+    }
+    stage('Build') {
       steps {
-        sh 'echo "Build"'
+        sh 'ls'
+        sh 'echo "Build Stage"'
         sh 'python --version'
         sh 'python HelloWorld.py'
         sh 'printenv'
@@ -15,20 +19,23 @@ pipeline {
     }
     stage('Test') {
       steps {
-        sh 'echo "Test"'
+        sh 'echo "Test Stage"'
         sh './run_test.sh' // echo "Test Successful"
       }
     }
     stage('Deploy') {
       steps {
-        sh 'echo "Deploy"' // echo "Deploy Successful"
-        sh './run_deploy.sh'
+        sh 'echo "Deploy Stage"'
+        sh './run_deploy.sh' // echo "Deploy Successful"
       }
     }
   }
   post {
     always { echo 'This will always run' }
-    success { echo 'This will run if succsesful' }
+    success { echo 'This will run if succsesful' 
+              mail to: 'vinh.huynh@ironmountain.com',
+                   subject: "Success Pipeline: ${currentBuild.fullDisplayName}",
+                   body: "Build Successful ${env.BUILD_URL}" }
     failure { echo 'This will run if failed' }
     changed { echo 'This will run if pipeline changed' }
   }
