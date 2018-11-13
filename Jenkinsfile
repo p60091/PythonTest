@@ -6,7 +6,7 @@ pipeline {
   stages {
     stage('Prep') {
       steps{ 
-        withEnv("HOME=${env.WORKSPACE}"]) {
+        withEnv(["HOME=${env.WORKSPACE}"]) {
           sh 'pip install --user junit-xml'
               }}}
     stage('Build') {
