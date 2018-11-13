@@ -31,7 +31,8 @@ pipeline {
   }
   post {
     always { echo 'This will always run'
-             junit 'output.xml' }
+             junit 'output.xml'
+             deleteDir() }
     success { echo 'This will run if succsesful' 
               mail to: 'vinh.huynh@ironmountain.com',
                    subject: "Success Pipeline: ${currentBuild.fullDisplayName}",
