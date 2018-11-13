@@ -2,15 +2,12 @@ pipeline {
   agent { docker { image 'python:3.5.1' } }
   environment {
     TEST_ENV = 'Test Environment Variable'
-    HOME = ${env.WORKSPACE}
   }
   stages {
-    stage('Prep') {
-      steps{ 
-          sh 'pip install --user junit-xml'
-              }}
     stage('Build') {
       steps {
+        withEnv(["HOME=${env.WORKSPACE}"] {
+        sh 'pip isntall --user junit-xml'
         sh 'export PATH=$PATH:$WORKSPACE/.local/bin'
         sh 'pip list --user'
         sh 'python -m site --user-site'
@@ -20,7 +17,7 @@ pipeline {
         sh 'python HelloWorld.py'
         sh 'printenv'
         input "Test input:"
-      }
+      }}
     }
     stage('Test') {
       steps {
