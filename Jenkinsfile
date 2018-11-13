@@ -5,8 +5,8 @@ pipeline {
   }
   stages {
     stage('Prep') {
-      steps{ sh 'pip install --user junit-xml' 
-             sh 'export PATH=$PATH:~/.local/bin' }}
+      steps{ sh 'sudo pip install junit-xml' 
+              }}
     stage('Build') {
       steps {
         sh 'ls'
