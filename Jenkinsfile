@@ -5,7 +5,7 @@ pipeline {
   }
   stages {
     stage('Prep') {
-      pip install junit-xml
+      steps{ sh 'pip install junit-xml' } 
     }
     stage('Build') {
       steps {
