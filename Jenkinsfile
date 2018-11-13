@@ -6,7 +6,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        withEnv(["HOME=${env.WORKSPACE}"] {
+        withEnv(["HOME=${env.WORKSPACE}"]) {
         sh 'pip isntall --user junit-xml'
         sh 'export PATH=$PATH:$WORKSPACE/.local/bin'
         sh 'pip list --user'
@@ -17,7 +17,7 @@ pipeline {
         sh 'python HelloWorld.py'
         sh 'printenv'
         input "Test input:"
-      }}
+      } }
     }
     stage('Test') {
       steps {
