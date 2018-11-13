@@ -5,8 +5,8 @@ pipeline {
   }
   stages {
     stage('Prep') {
-      steps{ sh 'git clone https://github.com/kyrus/python-junit-xml.git'
-             sh 'python python-junit-xml/setup.py install --user'
+      steps{ git 'https://github.com/kyrus/python-junit-xml.git'
+             sh 'pip install --user'
               }}
     stage('Build') {
       steps {
