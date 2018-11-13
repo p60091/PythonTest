@@ -33,10 +33,7 @@ pipeline {
     always { echo 'This will always run'
              junit 'output.xml'
              deleteDir() }
-    success { echo 'This will run if succsesful' 
-              mail to: 'vinh.huynh@ironmountain.com',
-                   subject: "Success Pipeline: ${currentBuild.fullDisplayName}",
-                   body: "Build Successful ${env.BUILD_URL}" }
+    success { echo 'This will run if succsesful' }
     failure { echo 'This will run if failed' }
     changed { echo 'This will run if pipeline changed' }
   }
