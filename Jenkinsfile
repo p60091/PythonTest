@@ -2,13 +2,13 @@ pipeline {
   agent { docker { image 'python:3.5.1' } }
   environment {
     TEST_ENV = 'Test Environment Variable'
+    HOME = ${env.WORKSPACE}
   }
   stages {
     stage('Prep') {
       steps{ 
-        withEnv(["HOME=${env.WORKSPACE}"]) {
           sh 'pip install --user junit-xml'
-              }}}
+              }}
     stage('Build') {
       steps {
         sh 'export PATH=$PATH:$WORKSPACE/.local/bin'
