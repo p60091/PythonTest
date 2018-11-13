@@ -5,7 +5,9 @@ pipeline {
   }
   stages {
     stage('Prep') {
-      steps{ sh 'sudo pip install junit-xml' 
+      steps{ sh 'virtualenv venv --distribute'
+             sh '. venv/bin/activate'
+             sh 'pip install -r requirements.txt' 
               }}
     stage('Build') {
       steps {
